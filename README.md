@@ -81,28 +81,42 @@ git clone https://github.com/hasanbeder/AdobePhotoshopLR.git
 
 ## 📋 Customizing Application Icon
 
-### Method 1: Using Finder
-1. Right-click the `Adobe Photoshop LR.app`
-2. Select "Get Info"
-3. Click on the current icon in the top-left corner
-4. Copy your desired icon
-5. Paste the new icon over the existing one
+### Method 1: Using Finder (Detailed Steps)
+1. Locate your new icon file (must be in `.icns` format)
+2. Right-click the `Adobe Photoshop LR.app` in Finder
+3. Select "Show Package Contents"
+4. Navigate to `Contents/Resources/` folder
+5. Find the existing `ApplicationStub.icns` file
+6. Drag and drop your new icon, replacing the existing one
+   - macOS will prompt you to confirm replacement
+   - Click "Replace" to update the icon
 
 ### Method 2: Using Terminal
 ```bash
-# Replace 'NewIcon.icns' with your custom icon file
-cp NewIcon.icns "/path/to/Adobe Photoshop LR.app/Contents/Resources/ApplicationStub.icns"
+# Rename your icon to match the app's icon
+mv "YourNewIcon.icns" "ApplicationStub.icns"
+
+# Replace the app's icon
+cp "ApplicationStub.icns" "Adobe Photoshop LR.app/Contents/Resources/"
 ```
+
+📝 How to Use:
+1. Create or download your `.icns` icon file
+2. Rename the icon file to match the app's icon name
+3. Place the commands in the same folder as the app
+4. Run the commands in Terminal
+5. The app's icon will change instantly
 
 ### Icon Requirements
 - Must be in `.icns` format
 - Recommended sizes: 16x16, 32x32, 128x128, 256x256, 512x512 pixels
 - Use tools like [Image2icon](https://img2icnsapp.com/) for conversion
 
-### Troubleshooting
-- If icon doesn't change, restart Finder
-- Ensure you have write permissions
-- Use original `.icns` files for best compatibility
+### Troubleshooting Icon Changes
+- If icon doesn't update immediately:
+  - Restart Finder: `killall Finder`
+  - Clear icon cache: `sudo find /private/var/folders/ -name com.apple.dock.iconcache -exec rm {} \;`
+  - Restart Dock: `killall Dock`
 
 ## 🐛 Troubleshooting
 
